@@ -1,28 +1,25 @@
 package com.smoothy.encurtador.url.infrastructure.entity;
 
+import com.smoothy.encurtador.url.business.enums.expirationTime;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.LocalDateTime;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Builder
 
-@Document("urls_table")
-public class UrlEntity {
+@Document("hashes_table")
+public class HashsEntity {
 
     @Id
-    private String id;
-    private String uuid;
-    private String original_url;
     private String hash;
-    private LocalDateTime create_at;
+    @Field("is_available")
+    private boolean isAvailable;
+    private expirationTime timeExpiration;
 
-    public void setCreatedAt(LocalDateTime now) {
-
-    }
 }
