@@ -32,6 +32,6 @@ public class CronService {
             urlService.deleteById(url.getId());
             log.info("A URL encurtada foi deletada com sucesso da nossa DataBase");
         });
-        log.info("Finalizada de URL's expiradas");
+        log.info("Finalizada a busca de URL's expiradas.");
     }
 }
