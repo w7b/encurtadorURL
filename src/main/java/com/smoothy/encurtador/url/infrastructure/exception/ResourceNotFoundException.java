@@ -1,4 +1,4 @@
-package com.smoothy.encurtador.url.infrastructure;
+package com.smoothy.encurtador.url.infrastructure.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String mensagem){
