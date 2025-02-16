@@ -1,11 +1,12 @@
 package com.smoothy.encurtador.url.infrastructure.repository;
 
-import com.smoothy.encurtador.url.business.dto.out.UrlDtoResponse;
+import com.smoothy.encurtador.url.api.v1.dto.out.UrlDtoResponse;
 import com.smoothy.encurtador.url.infrastructure.entity.UrlEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
