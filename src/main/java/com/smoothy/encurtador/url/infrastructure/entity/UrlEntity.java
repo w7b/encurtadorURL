@@ -1,44 +1,51 @@
 package com.smoothy.encurtador.url.infrastructure.entity;
 
-import com.smoothy.encurtador.url.business.enums.UrlStats;
+import com.smoothy.encurtador.url.api.v1.enums.UrlStats;
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
 
-@Document("urls_col")
+@Document(collection = "urls_col")
 public class UrlEntity {
 
     @Id
     private String id;
+
+    @Indexed(unique = true)
     private String uuid;
+
+    @Field(name = "url")
     private String OUrl;
+
+    @Indexed(unique = true)
     private String hash;
 
-    @Field(name = "create_at")
-    private LocalDateTime createAt;
-    @Field(name = "time_expiration")
-    private LocalDateTime timeExpiration;
-
     @Field(name = "is_available")
-    private boolean isAvailable;
-
     @Builder.Default
+    private Boolean isAvailable = true;
+
     @Field(name = "click_count")
+    @Builder.Default
     private Long clickCount = 0L;
 
     @Field(name = "url_stats")
     private UrlStats urlStats;
 
+    @Field(name = "create_at")
+    private LocalDateTime createAt;
 
-    public void setCreatedAt(LocalDateTime now) {
-    }
+    @Indexed(expireAfter = "3600")
+    @Field(name = "time_expiration")
+    @Builder.Default
+    private LocalDateTime timeExpiration = LocalDateTime.now().plusMinutes(30);
+
 }

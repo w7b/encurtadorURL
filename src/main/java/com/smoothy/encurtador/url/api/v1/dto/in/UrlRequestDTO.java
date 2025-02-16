@@ -1,4 +1,4 @@
-package com.smoothy.encurtador.url.business.dto.in;
+package com.smoothy.encurtador.url.api.v1.dto.in;
 
 import lombok.*;
 

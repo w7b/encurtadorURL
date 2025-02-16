@@ -1,8 +1,8 @@
-package com.smoothy.encurtador.url.controller;
+package com.smoothy.encurtador.url.api.v1.controller;
 
-import com.smoothy.encurtador.url.business.UrlService;
-import com.smoothy.encurtador.url.business.dto.in.UrlRequestDTO;
-import com.smoothy.encurtador.url.business.dto.out.UrlDtoResponse;
+import com.smoothy.encurtador.url.api.v1.business.UrlService;
+import com.smoothy.encurtador.url.api.v1.dto.in.UrlRequestDTO;
+import com.smoothy.encurtador.url.api.v1.dto.out.UrlDtoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -21,8 +21,8 @@ public class UrlController {
 
     @PostMapping("/urls")
     public ResponseEntity<UrlDtoResponse> salvaUrl(@RequestBody UrlRequestDTO urlDTO){
-        UrlDtoResponse savedUrl = urlService.saveAndGenHash(urlDTO);
-        return ResponseEntity.ok(savedUrl);
+        UrlDtoResponse savingUrl = urlService.saveAndGenHash(urlDTO);
+        return ResponseEntity.ok(savingUrl);
     }
 
     @GetMapping("/urls/{hash}")
