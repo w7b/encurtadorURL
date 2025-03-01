@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: url-shortten
+  datasource:
+    url: ${DB_CONNECTION}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+cron:
+  times:
+    handleFifteenDay: 0 15 10 15 * ?
+    handleFifteenMin: 0 */15 * * * *
+    handleThirtySec: 0/30 0/1 * * * ?
